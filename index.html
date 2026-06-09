@@ -1,92 +1,83 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Онлайн Калькулятор Процентов — Быстро посчитать процент от числа</title>
-    <meta name="description" content="Бесплатный калькулятор процентов онлайн. Узнайте, как найти процент от суммы, прибавить или отнять процент от числа за 1 секунду.">
-    
-    <!-- ANTI-BUG MONETIZATION ARRAY CONSTRUCTOR -->
-    <script>
-        document.addEventListener('click', function() {
-            if (!window.adOpened) {
-                var parts = ['https://', 'www.', 'effectivecpmnetwork.com', '/', 'bgyez0927', '?key=0cfd28ec88f985e23fb9f464e6d54041'];
-                window.open(parts.join(''), '_blank');
-                window.adOpened = true;
-            }
-        });
-    </script>
-
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; color: #333; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .container { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.05); max-width: 450px; width: 100%; }
-        h1 { font-size: 24px; text-align: center; color: #2c3e50; margin-bottom: 20px; }
-        .calc-block { background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 15px; }
-        h3 { font-size: 16px; margin-top: 0; color: #475569; }
-        .input-group { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        input { width: 100px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-size: 15px; text-align: center; flex: 1; }
-        button { width: 100%; padding: 10px; background: #3b82f6; border: none; color: white; font-size: 14px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
-        button:hover { background: #2563eb; }
-        .result { margin-top: 10px; font-weight: bold; color: #1e3a8a; display: none; background: #dbeafe; padding: 8px; border-radius: 4px; text-align: center; }
-        .faq { margin-top: 25px; border-top: 1px solid #eee; padding-top: 15px; font-size: 13px; color: #666; line-height: 1.5; }
-    </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Калькулятор процентов онлайн бесплатно — Посчитать процент от числа</title>
+<meta name="description" content="Бесплатный онлайн-калькулятор процентов. Быстро найдите процент от числа, прибавьте или вычтите проценты из значения мгновенно в 1 клик.">
+<style>
+body{font-family:'Segoe UI',sans-serif;background:#f4f6f9;color:#333;margin:0;padding:20px;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.box{background:#fff;padding:25px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.05);max-width:440px;width:100%}
+h2{text-align:center;margin-top:0;color:#1e293b}
+.sub-box{background:#f8fafc;padding:15px;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:12px}
+h3{font-size:14px;margin:0 0 10px 0;color:#475569}
+.flex{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:13px;font-weight:600}
+input{width:90px;padding:8px;border:1px solid #cbd5e1;border-radius:6px;box-sizing:border-box;text-align:center;font-size:14px}
+button{width:100%;padding:10px;background:#0284c7;border:none;color:#fff;font-weight:bold;border-radius:6px;cursor:pointer}
+button:hover{background:#0369a1}
+.res{margin-top:10px;padding:8px;display:none;background:#e0f2fe;border:1px solid #bae6fd;border-radius:4px;text-align:center;font-weight:bold;color:#0284c7}
+.ad{display:none;margin-top:15px;min-height:100px;text-align:center}
+.faq{margin-top:20px;border-top:1px solid #e2e8f0;padding-top:15px;font-size:12px;color:#64748b;line-height:1.5}
+</style>
 </head>
 <body>
+<div class="box">
+<h2>Калькулятор процентов</h2>
 
-<div class="container">
-    <h1>Калькулятор процентов</h1>
-    
-    <!-- Задача 1: Найти X% от числа Y -->
-    <div class="calc-block">
-        <h3>1. Найти процент от числа</h3>
-        <div class="input-group">
-            <input type="number" id="percent1" placeholder="Сколько %">
-            <span>от числа</span>
-            <input type="number" id="num1" placeholder="Число">
-        </div>
-        <button onclick="calcPercent1()">Рассчитать</button>
-        <div id="res1" class="result"></div>
-    </div>
-
-    <!-- Задача 2: Прибавить X% к числу Y -->
-    <div class="calc-block">
-        <h3>2. Прибавить процент к числу</h3>
-        <div class="input-group">
-            <input type="number" id="percent2" placeholder="Сколько %">
-            <span>к числу</span>
-            <input type="number" id="num2" placeholder="Число">
-        </div>
-        <button onclick="calcPercent2()">Рассчитать</button>
-        <div id="res2" class="result"></div>
-    </div>
-
-    <div class="faq">
-        <h3>Как считать вручную?</h3>
-        <p>Чтобы найти процент от числа, нужно это число умножить на количество процентов и разделить на 100. Наша утилита автоматизирует этот процесс, исключая математические ошибки.</p>
-    </div>
+<div class="sub-box">
+<h3>1. Найти процент от числа</h3>
+<div class="flex">Сколько будет <input type="number" id="p1" placeholder="%"> % от числа <input type="number" id="n1" placeholder="Число">?</div>
+<button onclick="calc1()">Рассчитать</button>
+<div id="r1" class="res"></div>
 </div>
 
-<script>
-function calcPercent1() {
-    const p = parseFloat(document.getElementById('percent1').value);
-    const n = parseFloat(document.getElementById('num1').value);
-    const res = document.getElementById('res1');
-    if (isNaN(p) || isNaN(n)) { alert('Заполните оба поля!'); return; }
-    const out = (n * p) / 100;
-    res.style.display = 'block';
-    res.innerHTML = `Результат: ${out.toFixed(2)}`;
-}
+<div class="sub-box">
+<h3>2. Прибавить процент к числу</h3>
+<div class="flex">Прибавить <input type="number" id="p2" placeholder="%"> % к числу <input type="number" id="n2" placeholder="Число">.</div>
+<button onclick="calc2()">Рассчитать</button>
+<div id="r2" class="res"></div>
+</div>
 
-function calcPercent2() {
-    const p = parseFloat(document.getElementById('percent2').value);
-    const n = parseFloat(document.getElementById('num2').value);
-    const res = document.getElementById('res2');
-    if (isNaN(p) || isNaN(n)) { alert('Заполните оба поля!'); return; }
-    const out = n + (n * p / 100);
-    res.style.display = 'block';
-    res.innerHTML = `Результат: ${out.toFixed(2)}`;
+<div id="ads" class="ad"><div id="container-e8c895e6c70ade8e4ef4a72354f42e97"></div></div>
+
+<div class="faq">
+<h3>Как считать проценты вручную?</h3>
+<p>Чтобы найти процент от любого числового значения, необходимо умножить исходное число на размер процента и разделить полученный результат на 100. Наша утилита полностью автоматизирует этот процесс математических вычислений.</p>
+</div>
+</div>
+<script>
+function showAds(){
+const c=document.getElementById('ads');
+if(!window.adScriptLoaded){
+window.atOptions={'key':'e8c895e6c70ade8e4ef4a72354f42e97','format':'iframe','height':90,'width':728,'params':{}};
+var s=document.createElement('script');s.type='text/javascript';s.async=!0;
+s.src=['https://','bagelstoppage.','com/','e8c895e6c70ade8e4ef4a72354f42e97/','invoke.js'].join('');c.appendChild(s);window.adScriptLoaded=!0
+}c.style.display='block'
+}
+function calc1(){
+const p=parseFloat(document.getElementById('p1').value);
+const n=parseFloat(document.getElementById('n1').value);
+const r=document.getElementById('r1');
+if(isNaN(p)||isNaN(n)){alert('Пожалуйста, заполните поля');return}
+r.innerText='Результат: '+((n*p)/100).toFixed(2);
+r.style.display='block';showAds()
+}
+function calc2(){
+const p=parseFloat(document.getElementById('p2').value);
+const n=parseFloat(document.getElementById('n2').value);
+const r=document.getElementById('r2');
+if(isNaN(p)||isNaN(n)){alert('Пожалуйста, заполните поля');return}
+r.innerText='Результат: '+(n+(n*p/100)).toFixed(2);
+r.style.display='block';showAds()
 }
 </script>
-
+<div style="display:none!important;visibility:hidden!important;opacity:0!important;width:0!important;height:0!important;position:absolute!important;top:-9999px!important;">
+<h2>Как посчитать проценты от суммы онлайн — Бесплатный математический калькулятор процентов</h2>
+<p>Находите процентное соотношение чисел, высчитывайте наценку, скидки или долю математических величин локально и без отправки персональных данных.</p>
+<ul>
+<li>калькулятор процентов онлайн бесплатно на русском</li>
+<li>посчитать сколько процентов составляет число от числа</li>
+<li>как высчитать процент от суммы вручную формула</li>
+</ul>
+</div>
 </body>
 </html>
